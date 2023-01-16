@@ -1,0 +1,10 @@
+/Users/cb0103/Public/workspace/github/dev/fups/user/user-service/src/main/java/com/api/user/UserApplication.java
+/Users/cb0103/Public/workspace/github/dev/fups/user/user-service/src/main/java/com/api/user/data/property/UserProperties.java
+/Users/cb0103/Public/workspace/github/dev/fups/user/user-service/src/main/java/com/api/user/data/mapper/IRoleMapper.java
+/Users/cb0103/Public/workspace/github/dev/fups/user/user-service/src/main/java/com/api/user/operation/UserOperation.java
+/Users/cb0103/Public/workspace/github/dev/fups/user/user-service/src/main/java/com/api/user/data/entity/RoleEntity.java
+/Users/cb0103/Public/workspace/github/dev/fups/user/user-service/src/main/java/com/api/user/data/IUserRepository.java
+/Users/cb0103/Public/workspace/github/dev/fups/user/user-service/src/main/java/com/api/user/controller/UserController.java
+/Users/cb0103/Public/workspace/github/dev/fups/user/user-service/src/main/java/com/api/user/data/mapper/IUserMapper.java
+/Users/cb0103/Public/workspace/github/dev/fups/user/user-service/src/main/java/com/api/user/data/entity/UserEntity.java
+/Users/cb0103/Public/workspace/github/dev/fups/user/user-service/src/main/java/com/api/user/CommandLineAppStartupRunner.java

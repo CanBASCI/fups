@@ -1,0 +1,5 @@
+com/api/user/dto/UserDto.class
+com/api/user/feign/UserService.class
+com/api/user/dto/RoleDto.class
+com/api/user/dto/UserDto$UserDtoBuilder.class
+com/api/user/dto/RoleDto$RoleDtoBuilder.class

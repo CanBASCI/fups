@@ -1,0 +1,12 @@
+com/api/user/data/mapper/IRoleMapper.class
+com/api/user/operation/UserOperation.class
+com/api/user/CommandLineAppStartupRunner.class
+com/api/user/data/entity/RoleEntity.class
+com/api/user/data/mapper/IUserMapper.class
+com/api/user/data/mapper/IUserMapperImpl.class
+com/api/user/data/mapper/IRoleMapperImpl.class
+com/api/user/controller/UserController.class
+com/api/user/data/property/UserProperties.class
+com/api/user/data/IUserRepository.class
+com/api/user/UserApplication.class
+com/api/user/data/entity/UserEntity.class

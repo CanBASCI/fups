@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: user
+  mvc:
+    problem-details:
+      enabled: true
+  profiles:
+    active:
+      - dev
+
+  datasource:
+    password: postgrespw
+    url: jdbc:postgresql://localhost:55000/fups_user
+    username: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+  flyway:
+    enabled: true
+
+server:
+  port: 8181
+  error:
+    include-message: always
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+    enabled: true
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  tracing:
+    sampling:
+      probability: 1.0
