@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="api-gateway" />
         <module name="core" />
+        <module name="config-server" />
         <module name="eureka-server" />
       </profile>
       <profile name="Annotation profile for fups" enabled="true">
@@ -21,7 +22,6 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.24/lombok-1.18.24.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
         </processorPath>
-        <module name="config-server" />
         <module name="user-api" />
         <module name="user-service" />
       </profile>
