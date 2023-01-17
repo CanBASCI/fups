@@ -9,8 +9,8 @@ spring:
       - dev
 
   datasource:
-    password: postgrespw
-    url: jdbc:postgresql://localhost:55000/fups_user
+    password: 123456
+    url: jdbc:postgresql://localhost:5432/fups_user
     username: postgres
 
   jpa:

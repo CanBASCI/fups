@@ -2,6 +2,7 @@ package com.api.user.operation;
 
 import com.api.core.exception.NotFoundException;
 import com.api.user.data.IUserRepository;
+import com.api.user.data.entity.UserEntity;
 import com.api.user.data.mapper.IUserMapper;
 import com.api.user.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,17 @@ public class UserOperation {
         return userMapper.toDtos(userRepository.findAll());
     }
 
-    public void throwException(){
-        throw new NotFoundException("not found");
+    public UserDto getUser(String userName) {
+        UserEntity userEntity = userRepository.findByUserName(userName);
+        return userMapper.toDto(userEntity);
+    }
+
+    public int throwException(){
+        String a = "a";
+        if(a.equals("a")){
+            throw new NotFoundException("not found");
+        }
+        return 1;
     }
     public int getPort(){
         logger.info("UserOperation -> getPort");

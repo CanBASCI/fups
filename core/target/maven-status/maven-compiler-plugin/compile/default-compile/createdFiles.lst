@@ -1,4 +1,0 @@
-com/api/core/exception/BadRequestException.class
-com/api/core/exception/ExceptionMessage.class
-com/api/core/property/CoreProperties.class
-com/api/core/exception/NotFoundException.class

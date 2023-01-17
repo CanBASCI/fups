@@ -1,21 +1,16 @@
 spring:
   application:
-    name: user
+    name: api-gateway
   mvc:
     problem-details:
       enabled: true
 
-  datasource:
-    password: 123456
-    url: jdbc:postgresql://localhost:5432/cs_user
-    username: postgres
-
-  jpa:
-    hibernate:
-      ddl-auto: validate
+spring-doc:
+  swagger-ui:
+    path: /swagger-ui.html
 
 server:
-  port: 8181
+  port: 8080
   error:
     include-message: always
 
@@ -27,7 +22,7 @@ eureka:
     register-with-eureka: true
     enabled: true
   instance:
-    prefer-ip-address: true
+    preferIpAddress: true
 
 management:
   endpoint:

@@ -1,0 +1,105 @@
+version: "3.9"
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - spring
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 768M
+        reservations:
+          memory: 512M
+  eureka-server:
+    build: ./eureka-server
+    image: fups/eureka-server:latest
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+        reservations:
+          memory: 768M
+  user:
+    build: ./user
+    image: fups/user:latest
+    container_name: user
+    ports:
+      - "8181:8181"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://host.docker.internal:5432/fups_user
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    depends_on:
+      - postgres
+    networks:
+      - spring
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+        reservations:
+          memory: 768M
+  user_2:
+    build: ./user
+    image: fups/user:latest
+    container_name: user_2
+    ports:
+      - "8182:8182"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://host.docker.internal:5432/fups_user
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+      - SERVER_PORT=8182
+    depends_on:
+      - postgres
+    networks:
+      - spring
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+        reservations:
+          memory: 768M
+  api-gateway:
+    build: ./api-gateway
+    image: fups/api-gateway:latest
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    networks:
+      - spring
+    depends_on:
+      - user
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+        reservations:
+          memory: 768M
+networks:
+  postgres:
+    driver: bridge
+  spring:
+    driver: bridge
+volumes:
+  postgres:

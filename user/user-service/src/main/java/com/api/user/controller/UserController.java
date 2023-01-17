@@ -22,8 +22,13 @@ public class UserController implements UserService {
     }
 
     @Override
-    public void throwException() {
-        userOperation.throwException();
+    public UserDto getUser(String userName) {
+        return userOperation.getUser(userName);
+    }
+
+    @Override
+    public int throwException() {
+        return userOperation.throwException();
     }
 
     @Override
