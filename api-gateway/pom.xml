@@ -19,6 +19,10 @@
         <maven.compiler.target>20</maven.compiler.target>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <spring-cloud-starter-netflix-eureka-client.version>4.0.0</spring-cloud-starter-netflix-eureka-client.version>
+        <micrometer-registry-prometheus.version>1.10.3</micrometer-registry-prometheus.version>
+        <micrometer-tracing-bridge-brave.version>1.0.1</micrometer-tracing-bridge-brave.version>
+        <opentelemetry-exporter-zipkin.version>1.22.0</opentelemetry-exporter-zipkin.version>
+        <loki-logback-appender.version>1.4.0-rc2</loki-logback-appender.version>
         <jjwt.version>0.9.1</jjwt.version>
         <jaxb-api.version>2.4.0-b180830.0359</jaxb-api.version>
         <java-jwt.version>4.2.2</java-jwt.version>
@@ -86,6 +90,16 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok-mapstruct-binding</artifactId>
             <version>${version.mapstruct-lombok}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+            <version>${micrometer-registry-prometheus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-tracing-bridge-brave</artifactId>
+            <version>${micrometer-tracing-bridge-brave.version}</version>
         </dependency>
         <dependency>
             <groupId>base.org</groupId>

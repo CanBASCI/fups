@@ -1,0 +1,28 @@
+global:
+  scrape_interval: 10s
+  evaluation_interval: 10s
+scrape_configs:
+  - job_name: 'all'
+    metrics_path: 'actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: [ 'host.docker.internal:8080', 'host.docker.internal:8181' ]
+        labels:
+          instance: 'all'
+          application: 'fups'
+  - job_name: 'api-gateway'
+    metrics_path: 'actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: [ 'host.docker.internal:8080' ]
+        labels:
+          instance: 'api-gateway'
+          application: 'fups'
+  - job_name: 'user'
+    metrics_path: 'actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: [ 'host.docker.internal:8181' ]
+        labels:
+          instance: 'user'
+          application: 'fups'

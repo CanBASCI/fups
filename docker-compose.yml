@@ -53,6 +53,33 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
     networks:
       - spring
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./config-server/prometheus.yml:/etc/config-server/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/config-server/prometheus/prometheus.yml'
+    ports:
+      - "9090:9090"
+    networks:
+      - spring
+    restart: always
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    links:
+      - prometheus:prometheus
+    depends_on:
+      - prometheus
+    ports:
+      - "3000:3000"
+    networks:
+      - spring
+    restart: always
   eureka-server:
     build: ./eureka-server
     image: fups/eureka-server:latest
@@ -79,6 +106,8 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
       - SPRING_KAFKA_BOOTSTRAPSERVERS=broker:29092
+    depends_on:
+      - broker
     networks:
       - spring
   user:
