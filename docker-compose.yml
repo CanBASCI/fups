@@ -151,6 +151,46 @@ services:
           memory: 1024M
         reservations:
           memory: 768M
+  order:
+    build: ./order
+    image: fups/order:latest
+    container_name: order
+    ports:
+      - "8281:8281"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://host.docker.internal:5432/fups_order
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    depends_on:
+      - postgres
+    networks:
+      - spring
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+        reservations:
+          memory: 768M
+  saga-orchestration:
+    build: ./saga-orchestration
+    image: fups/saga-orchestration:latest
+    container_name: saga-orchestration
+    ports:
+      - "5454:5454"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    networks:
+      - spring
+    depends_on:
+      - user
+      - order
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+        reservations:
+          memory: 768M
   api-gateway:
     build: ./api-gateway
     image: fups/api-gateway:latest
@@ -164,6 +204,7 @@ services:
       - spring
     depends_on:
       - user
+      - saga-orchestration
     deploy:
       resources:
         limits:

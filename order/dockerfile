@@ -1,0 +1,4 @@
+FROM openjdk:20
+ADD order-api/target/*.jar order-api-1.0-SNAPSHOT.jar
+ADD order-service/target/*.jar order-service-1.0-SNAPSHOT.jar
+ENTRYPOINT ["java","-jar","order-service-1.0-SNAPSHOT.jar"]

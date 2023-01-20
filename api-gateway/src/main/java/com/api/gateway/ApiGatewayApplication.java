@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@EnableFeignClients({"com.api.user"})
+@EnableFeignClients({"com.api.user", "com.api.saga"})
 public class ApiGatewayApplication {
     public static void main(String[] args) {
         SpringApplication.run(ApiGatewayApplication.class, args);

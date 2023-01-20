@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: order
+  mvc:
+    problem-details:
+      enabled: true
+
+  datasource:
+    hikari:
+      pool-name: order-db
+    password: 123456
+    url: jdbc:postgresql://localhost:5432/fups_order
+    username: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+server:
+  port: 8181
+  error:
+    include-message: always
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+    enabled: true
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  tracing:
+    sampling:
+      probability: 1.0
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"

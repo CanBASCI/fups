@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="84e53377-fb2d-4736-b68e-b5a0dc4a139a" name="fups_order" url="jdbc:postgresql://localhost/fups_order" driverClass="org.postgresql.Driver" />
+      <data-source id="cb2f0d5d-183a-427c-be59-63b1b7fa553b" name="fups" url="jdbc:postgresql://localhost/fups_order" driverClass="org.postgresql.Driver" />
+    </data-sources>
+    <data-source-infos>
+      <data-source-info id="84e53377-fb2d-4736-b68e-b5a0dc4a139a" persistence-unit-name="Default" />
+    </data-source-infos>
+  </component>
+</project>

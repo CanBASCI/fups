@@ -1,0 +1,4 @@
+FROM openjdk:20
+ADD saga-api/target/*.jar saga-api-1.0-SNAPSHOT.jar
+ADD saga-service/target/*.jar saga-service-1.0-SNAPSHOT.jar
+ENTRYPOINT ["java","-jar","saga-service-1.0-SNAPSHOT.jar"]

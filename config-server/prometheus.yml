@@ -6,7 +6,7 @@ scrape_configs:
     metrics_path: 'actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: [ 'host.docker.internal:8080', 'host.docker.internal:8181' ]
+      - targets: [ 'host.docker.internal:8080', 'host.docker.internal:8181', 'host.docker.internal:8281', 'host.docker.internal:5454' ]
         labels:
           instance: 'all'
           application: 'fups'
@@ -25,4 +25,20 @@ scrape_configs:
       - targets: [ 'host.docker.internal:8181' ]
         labels:
           instance: 'user'
+          application: 'fups'
+  - job_name: 'order'
+    metrics_path: 'actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: [ 'host.docker.internal:8281' ]
+        labels:
+          instance: 'order'
+          application: 'fups'
+  - job_name: 'saga-orchestration'
+    metrics_path: 'actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: [ 'host.docker.internal:5454' ]
+        labels:
+          instance: 'saga-orchestration'
           application: 'fups'
